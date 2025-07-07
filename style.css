@@ -1,0 +1,472 @@
+/* 基本的なリセットとフォント設定 */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Helvetica Neue', Arial, 'Hiragino Kaku Gothic ProN', 'Hiragino Sans', Meiryo, sans-serif;
+    line-height: 1.6;
+    color: #333;
+    background-color: #fff;
+    position: relative;
+}
+
+body::before {
+    content: '';
+    position: fixed;
+    top: 0;
+    right: 0;
+    width: 65vw;
+    height: 75vh;
+    background-color: #e2f4c1;
+    z-index: 0;
+}
+
+/* ヘッダーのスタイル */
+.l-header {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    z-index: 1000;
+    background-color: rgba(255, 255, 255, 0.95);
+    backdrop-filter: blur(10px);
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+}
+
+.l-header__body {
+    max-width: 1400px;
+    margin: 0 auto;
+    padding: 0 60px;
+}
+
+.l-header__frame {
+    height: 80px;
+}
+
+.l-header__main {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    width: 100%;
+    height: 100%;
+}
+
+.l-header__logo a {
+    display: inline-block;
+    text-decoration: none;
+}
+
+.l-header__logo img {
+    height: 50px;
+    width: auto;
+    display: block;
+}
+
+.l-menu {
+    margin-left: auto;
+}
+
+.l-menu__list {
+    display: flex;
+    list-style: none;
+    gap: 2rem;
+}
+
+.l-menu__list a {
+    color: #333;
+    text-decoration: none;
+    font-weight: 500;
+    transition: color 0.3s ease;
+}
+
+.l-menu__list a:hover {
+    color: #2c5e3b;
+}
+
+.l-header__switch {
+    display: none;
+}
+
+/* メイン部分（ヘッダー分の余白） */
+.l-body {
+    padding: 100px 20px 20px 20px;
+    position: relative;
+    z-index: 1;
+}
+
+/* ファーストビューセクション */
+.l-title {
+    position: relative;
+    height: calc(100vh - 140px);
+    overflow: hidden;
+    border-radius: 20px;
+    margin: 0 auto;
+    max-width: 1400px;
+    background-color: #000;
+}
+
+
+.l-title__visual {
+    position: relative;
+    width: 100%;
+    height: 100%;
+}
+
+.c-content {
+    position: relative;
+    width: 100%;
+    height: 100%;
+}
+
+.c-content__inner {
+    position: relative;
+    width: 100%;
+    height: 100%;
+}
+
+.l-title__visual__pict {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 2;
+}
+
+.t-top__visual-slider {
+    width: 100%;
+    height: 100%;
+    position: relative;
+}
+
+.js-carousel {
+    width: 100%;
+    height: 100%;
+    position: relative;
+}
+
+.js-carousel__main {
+    width: 100%;
+    height: 100%;
+    position: relative;
+}
+
+.u-block {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    width: 100%;
+    height: 100%;
+    position: relative;
+}
+
+.js-carousel__cell {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    opacity: 0;
+    transition: opacity 1s ease-in-out;
+    z-index: 1;
+}
+
+.js-carousel__cell.is-current {
+    opacity: 1;
+    z-index: 2;
+}
+
+.js-carousel__frame {
+    width: 100%;
+    height: 100%;
+    position: relative;
+    overflow: hidden;
+    border-radius: 20px;
+}
+
+.js-carousel__obj {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: center;
+    border-radius: 20px;
+}
+
+.t-top__visual-slogan {
+    position: absolute;
+    bottom: 40px;
+    left: 40px;
+    text-align: left;
+    color: #333;
+    z-index: 10;
+}
+
+.t-top__visual-slogan__body {
+    width: 100%;
+}
+
+.t-top__visual-slogan__main {
+    display: inline-block;
+}
+
+.t-top__visual-slogan__main__obj {
+    display: block;
+}
+
+.t-top__visual-slogan__main__area {
+    display: block;
+    font-size: 3.0rem;
+    font-weight: bold;
+    line-height: 1.2;
+    color: #333;
+}
+
+.t-top__visual-slogan__main__block {
+    margin-bottom: 15px;
+}
+
+.t-top__visual-slogan__main__txt {
+    display: inline-block;
+    background-color: rgba(255, 255, 255, 0.95);
+    padding: 10px 20px;
+    border-radius: 8px;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+    backdrop-filter: blur(10px);
+}
+
+.u-effect-type1 {
+    display: inline-block;
+}
+
+.u-effect__cell {
+    display: inline-block;
+    opacity: 0;
+    animation: fadeInUp 0.8s ease forwards;
+}
+
+.u-effect__cell:nth-child(1) { animation-delay: 0.1s; }
+.u-effect__cell:nth-child(2) { animation-delay: 0.2s; }
+.u-effect__cell:nth-child(3) { animation-delay: 0.3s; }
+.u-effect__cell:nth-child(4) { animation-delay: 0.4s; }
+.u-effect__cell:nth-child(5) { animation-delay: 0.5s; }
+.u-effect__cell:nth-child(6) { animation-delay: 0.6s; }
+.u-effect__cell:nth-child(7) { animation-delay: 0.7s; }
+.u-effect__cell:nth-child(8) { animation-delay: 0.8s; }
+.u-effect__cell:nth-child(9) { animation-delay: 0.9s; }
+
+@keyframes fadeInUp {
+    from {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.t-top__visual-scroll {
+    position: fixed;
+    right: 40px;
+    bottom: 40px;
+    z-index: 1000;
+}
+
+.t-top__visual-scroll__main {
+    display: inline-block;
+}
+
+.t-top__visual-scroll__link {
+    color: #333;
+    text-decoration: none;
+    display: inline-block;
+    text-align: center;
+}
+
+.t-top__visual-scroll__txt {
+    font-size: 0.9rem;
+    margin-bottom: 10px;
+    letter-spacing: 0.1em;
+    color: #333;
+    font-weight: 500;
+}
+
+.t-top__visual-scroll__line {
+    width: 1px;
+    height: 30px;
+    background-color: #333;
+    margin: 0 auto;
+    animation: scroll-bounce 2s infinite;
+}
+
+@keyframes scroll-bounce {
+    0%, 20%, 50%, 80%, 100% {
+        transform: translateY(0);
+    }
+    40% {
+        transform: translateY(-10px);
+    }
+    60% {
+        transform: translateY(-5px);
+    }
+}
+
+/* ページインジケーター */
+.t-top__visual-indicator {
+    position: absolute;
+    bottom: 40px;
+    right: 40px;
+    z-index: 10;
+}
+
+.t-top__visual-indicator__circle {
+    transform: rotate(-90deg);
+}
+
+.t-top__visual-indicator__bg {
+    fill: none;
+    stroke: rgba(255, 255, 255, 0.3);
+    stroke-width: 4;
+}
+
+.t-top__visual-indicator__progress {
+    fill: none;
+    stroke: #fff;
+    stroke-width: 4;
+    stroke-linecap: round;
+    stroke-dasharray: 220;
+    stroke-dashoffset: 220;
+    transition: stroke-dashoffset 0.3s ease;
+}
+
+.t-top__visual-indicator__text {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    color: #fff;
+    font-size: 1.2rem;
+    font-weight: bold;
+    text-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
+    white-space: nowrap;
+}
+
+/* メインコンテンツ */
+/* レスポンシブデザイン */
+
+/* 1640px以下でスクロールアニメーションを非表示 */
+@media (max-width: 1640px) {
+    .t-top__visual-scroll {
+        display: none;
+    }
+}
+
+@media (max-width: 768px) {
+    .l-menu__list {
+        display: none;
+    }
+    
+    .l-header__switch {
+        display: block;
+        cursor: pointer;
+    }
+    
+    .l-header__switch__icon__obj {
+        width: 25px;
+        height: 3px;
+        background-color: #333;
+        margin: 5px 0;
+        transition: 0.3s;
+    }
+    
+    .l-header__switch__icon__obj:before,
+    .l-header__switch__icon__obj:after {
+        content: '';
+        display: block;
+        width: 25px;
+        height: 3px;
+        background-color: #333;
+        margin: 5px 0;
+        transition: 0.3s;
+    }
+    
+    .l-body {
+        padding: 90px 10px 10px 10px;
+    }
+    
+    .l-title {
+        border-radius: 15px;
+        height: calc(100vh - 120px);
+    }
+    
+    .js-carousel__frame,
+    .js-carousel__obj {
+        border-radius: 15px;
+    }
+    
+    .t-top__visual-slogan__main__area {
+        font-size: 2.5rem;
+    }
+    
+    .t-top__visual-scroll {
+        right: 15px;
+        bottom: 100px;
+    }
+    
+    .t-top__visual-scroll__link {
+        padding: 15px;
+    }
+    
+    .t-top__visual-scroll__txt {
+        font-size: 0.8rem;
+    }
+}
+
+/* 610px以下でテロップサイズをさらに小さく */
+@media (max-width: 610px) {
+    .t-top__visual-slogan__main__area {
+        font-size: 1.8rem;
+    }
+    
+    .t-top__visual-slogan__main__txt {
+        padding: 8px 15px;
+    }
+    
+    .t-top__visual-slogan__main__block {
+        margin-bottom: 10px;
+    }
+}
+
+/* 480px以下でプログレスアニメーションを右上に移動 */
+@media (max-width: 480px) {
+    .t-top__visual-indicator {
+        top: 20px;
+        right: 20px;
+        bottom: auto;
+    }
+    
+    .t-top__visual-indicator__circle {
+        width: 60px;
+        height: 60px;
+    }
+    
+    .t-top__visual-indicator__bg,
+    .t-top__visual-indicator__progress {
+        r: 25;
+        cx: 30;
+        cy: 30;
+        stroke-width: 3;
+    }
+    
+    .t-top__visual-indicator__progress {
+        stroke-dasharray: 157;
+        stroke-dashoffset: 157;
+    }
+    
+    .t-top__visual-indicator__text {
+        font-size: 0.9rem;
+    }
+} 
