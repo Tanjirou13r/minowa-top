@@ -477,12 +477,39 @@ body::before {
     }
 }
 
-/* 480px以下でプログレスアニメーションを右上に移動 */
+/* 570px以下でテロップを縦読みに変更 */
+@media (max-width: 570px) {
+    .t-top__visual-slogan__main {
+        display: flex;
+        flex-direction: row;
+        gap: 15px;
+    }
+    
+    .t-top__visual-slogan__main__area {
+        font-size: 1.6rem;
+        display: flex;
+        flex-direction: row;
+        gap: 15px;
+    }
+    
+    .t-top__visual-slogan__main__block {
+        margin-bottom: 0;
+        display: block;
+    }
+    
+    .t-top__visual-slogan__main__txt {
+        writing-mode: vertical-rl;
+        text-orientation: upright;
+        padding: 15px 8px;
+        height: auto;
+    }
+}
+
+/* 480px以下でもプログレスアニメーションを右下固定で表示 */
 @media (max-width: 480px) {
     .t-top__visual-indicator {
-        top: 20px;
+        bottom: 20px;
         right: 20px;
-        bottom: auto;
     }
     
     .t-top__visual-indicator__circle {
