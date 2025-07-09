@@ -1,3 +1,40 @@
+/* フォント設定 */
+@font-face {
+    font-family: 'ZenKakuGothicNew';
+    src: url('./fonts/ZenKakuGothicNew-Regular.woff2') format('woff2'),
+         url('./fonts/ZenKakuGothicNew-Regular.ttf') format('truetype');
+    font-weight: 400;
+    font-style: normal;
+    font-display: swap;
+}
+
+@font-face {
+    font-family: 'ZenKakuGothicNew';
+    src: url('./fonts/ZenKakuGothicNew-Medium.woff2') format('woff2'),
+         url('./fonts/ZenKakuGothicNew-Medium.ttf') format('truetype');
+    font-weight: 500;
+    font-style: normal;
+    font-display: swap;
+}
+
+@font-face {
+    font-family: 'ZenKakuGothicNew';
+    src: url('./fonts/ZenKakuGothicNew-Bold.woff2') format('woff2'),
+         url('./fonts/ZenKakuGothicNew-Bold.ttf') format('truetype');
+    font-weight: 700;
+    font-style: normal;
+    font-display: swap;
+}
+
+@font-face {
+    font-family: 'ZenKakuGothicNew';
+    src: url('./fonts/ZenKakuGothicNew-Black.woff2') format('woff2'),
+         url('./fonts/ZenKakuGothicNew-Black.ttf') format('truetype');
+    font-weight: 900;
+    font-style: normal;
+    font-display: swap;
+}
+
 /* 基本的なリセットとフォント設定 */
 * {
     margin: 0;
@@ -6,7 +43,7 @@
 }
 
 body {
-    font-family: 'Helvetica Neue', Arial, 'Hiragino Kaku Gothic ProN', 'Hiragino Sans', Meiryo, sans-serif;
+    font-family: 'ZenKakuGothicNew', 'Helvetica Neue', Arial, 'Hiragino Kaku Gothic ProN', 'Hiragino Sans', Meiryo, sans-serif;
     line-height: 1.6;
     color: #333;
     background-color: #fff;
@@ -197,7 +234,7 @@ body::before {
 
 .t-top__visual-slogan {
     position: absolute;
-    bottom: 40px;
+    top: 40px;
     left: 40px;
     text-align: left;
     color: #333;
@@ -218,7 +255,7 @@ body::before {
 
 .t-top__visual-slogan__main__area {
     display: block;
-    font-size: 3.0rem;
+    font-size: 2.6rem;
     font-weight: bold;
     line-height: 1.2;
     color: #333;
