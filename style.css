@@ -491,15 +491,18 @@ body::before {
     .t-top__visual-slogan__main {
         display: flex;
         flex-direction: row-reverse;
-        gap: 15px;
+        gap: 8px;
+        align-items: flex-start;
     }
     
     .t-top__visual-slogan__main__area {
         font-size: 1.4rem;
         display: flex;
         flex-direction: row-reverse;
-        gap: 10px;
+        gap: 8px;
         line-height: 0.9;
+        align-items: flex-start;
+        flex-wrap: nowrap;
     }
     
     .t-top__visual-slogan__main__block {
@@ -510,8 +513,10 @@ body::before {
     .t-top__visual-slogan__main__txt {
         writing-mode: vertical-rl;
         text-orientation: upright;
-        padding: 15px 8px;
+        padding: 12px 6px;
         height: auto;
+        max-height: 50vh;
+        overflow: hidden;
     }
 }
 
