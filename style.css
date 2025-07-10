@@ -228,8 +228,12 @@ body::before {
     width: 100%;
     height: 100%;
     object-fit: cover;
-    object-position: bottom;
+    object-position: center;
     border-radius: 20px;
+}
+
+.js-carousel__obj.bottom-position {
+    object-position: bottom;
 }
 
 .t-top__visual-slogan {
