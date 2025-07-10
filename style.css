@@ -241,8 +241,8 @@ body::before {
 
 .t-top__visual-slogan {
     position: absolute;
-    top: 40px;
-    left: 40px;
+    top: 65px;
+    left: 65px;
     text-align: left;
     color: #333;
     z-index: 10;
@@ -484,8 +484,8 @@ body::before {
     }
 }
 
-/* 570px以下でテロップを縦読みに変更 */
-@media (max-width: 570px) {
+/* 780px以下でテロップを縦読みに変更 */
+@media (max-width: 780px) {
     .t-top__visual-slogan__main {
         display: flex;
         flex-direction: row;
