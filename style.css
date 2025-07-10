@@ -228,8 +228,15 @@ body::before {
     width: 100%;
     height: 100%;
     object-fit: cover;
-    object-position: center;
+    object-position: center center;
     border-radius: 20px;
+}
+
+/* 縦サイズが小さい時に画像を中心に表示 */
+@media (max-height: 700px) {
+    .js-carousel__obj {
+        object-position: center center;
+    }
 }
 
 .t-top__visual-slogan {
@@ -255,7 +262,7 @@ body::before {
 
 .t-top__visual-slogan__main__area {
     display: block;
-    font-size: 2.6rem;
+    font-size: 2.2rem;
     font-weight: bold;
     line-height: 1.2;
     color: #333;
