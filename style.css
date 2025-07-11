@@ -884,39 +884,91 @@ body::before {
 /* 780px以下でテロップを縦読みに変更 */
 @media (max-width: 780px) {
     .t-top__visual-slogan {
-      top: 25px;
-      left: 35px;
+        top: 25px;
+        left: 35px;
     }
-  
-    /* テロップ全体：横並びにする */
+    
     .t-top__visual-slogan__main {
-      display: flex;
-      flex-direction: row-reverse; /* 縦書き順に右→左に並ぶ */
-      align-items: flex-start;
+        /* Webkit対応：flexboxの完全対応 */
+        display: -webkit-box;
+        display: -webkit-flex;
+        display: -moz-box;
+        display: -ms-flexbox;
+        display: flex;
+        /* Webkit対応：flex-directionの完全対応 */
+        -webkit-box-orient: horizontal;
+        -webkit-box-direction: reverse;
+        -webkit-flex-direction: row-reverse;
+        -moz-box-orient: horizontal;
+        -moz-box-direction: reverse;
+        -ms-flex-direction: row-reverse;
+        flex-direction: row-reverse;
+
+        /* Webkit対応：align-itemsの完全対応 */
+        -webkit-box-align: start;
+        -webkit-align-items: flex-start;
+        -moz-box-align: start;
+        -ms-flex-align: start;
+        align-items: flex-start;
     }
-  
-    /* 各「列」エリア：縦書き */
+    
+    /* iOS Safari対応：gapの代わりにmarginを使用（確実な間隔調整） */
+    .t-top__visual-slogan__main .t-top__visual-slogan__main__area:not(:last-child) {
+        margin-left: 8px;
+    }
+    
     .t-top__visual-slogan__main__area {
-      writing-mode: vertical-rl;
-      -webkit-writing-mode: vertical-rl;
-      -ms-writing-mode: tb-rl;
-      text-orientation: upright;
-      -webkit-text-orientation: upright;
-      font-size: 1.4rem;
-      line-height: 1.2;
-      margin-left: 8px; /* 各列の間隔 */
+        font-size: 1.4rem;
+        /* Webkit対応：flexboxの完全対応 */
+        display: -webkit-box;
+        display: -webkit-flex;
+        display: -moz-box;
+        display: -ms-flexbox;
+        display: flex;
+        /* Webkit対応：flex_directionの完全対応 */
+        -webkit-box-orient: horizontal;
+        -webkit-box-direction: reverse;
+        -webkit-flex-direction: row-reverse;
+        -moz-box-orient: horizontal;
+        -moz-box-direction: reverse;
+        -ms-flex-direction: row-reverse;
+        flex-direction: row-reverse;
+        line-height: 0.9;
+        /* Webkit対応：align-itemsの完全対応 */
+        -webkit-box-align: start;
+        -webkit-align-items: flex-start;
+        -moz-box-align: start;
+        -ms-flex-align: start;
+        align-items: flex-start;
+        /* Webkit対応：flex-wrapの完全対応 */
+        -webkit-flex-wrap: nowrap;
+        -ms-flex-wrap: nowrap;
+        flex-wrap: nowrap;
     }
-  
-    /* 各「文字」ブロック（1文字ずつ） */
+    
+    /* iOS Safari対応：gapの代わりにmarginを使用（確実な間隔調整） */
+    .t-top__visual-slogan__main__area .t-top__visual-slogan__main__block:not(:last-child) {
+        margin-left: 8px;
+    }
+    
     .t-top__visual-slogan__main__block {
-      margin-bottom: 8px; /* 縦方向の余白 */
+        margin-bottom: 0;
+        display: block;
     }
-  
+    
     .t-top__visual-slogan__main__txt {
-      display: block;
-      padding: 6px;
+        /* iOS Safari対応：縦書きテキストの改善 */
+        -webkit-writing-mode: vertical-rl;
+        -ms-writing-mode: tb-rl;
+        writing-mode: vertical-rl;
+        -webkit-text-orientation: upright;
+        text-orientation: upright;
+        padding: 12px 6px;
+        height: auto;
+        max-height: 50vh;
+        overflow: hidden;
     }
-  }  
+}
 
 /* 480px以下でもプログレスアニメーションを右下固定で表示 */
 @media (max-width: 480px) {
