@@ -176,15 +176,11 @@ body::before {
     display: -ms-flexbox;
     display: flex;
     list-style: none;
-    /* Webkit対応：gapプロパティのフォールバック */
-    gap: 2rem;
 }
 
-/* gapが効かない古いWebkit用のフォールバック */
-@supports not (gap: 1rem) {
-    .l-menu__list li:not(:last-child) {
-        margin-right: 2rem;
-    }
+/* iOS Safari対応：gapの代わりにmarginを使用（確実な間隔調整） */
+.l-menu__list li:not(:last-child) {
+    margin-right: 2rem;
 }
 
 .l-menu__list a {
@@ -907,8 +903,7 @@ body::before {
         -moz-box-direction: reverse;
         -ms-flex-direction: row-reverse;
         flex-direction: row-reverse;
-        /* Webkit対応：gapプロパティのフォールバック */
-        gap: 8px;
+
         /* Webkit対応：align-itemsの完全対応 */
         -webkit-box-align: start;
         -webkit-align-items: flex-start;
@@ -917,11 +912,9 @@ body::before {
         align-items: flex-start;
     }
     
-    /* gapが効かない古いWebkit用のフォールバック */
-    @supports not (gap: 1rem) {
-        .t-top__visual-slogan__main > *:not(:last-child) {
-            margin-left: 8px;
-        }
+    /* iOS Safari対応：gapの代わりにmarginを使用（確実な間隔調整） */
+    .t-top__visual-slogan__main .t-top__visual-slogan__main__area:not(:last-child) {
+        margin-left: 8px;
     }
     
     .t-top__visual-slogan__main__area {
@@ -932,7 +925,7 @@ body::before {
         display: -moz-box;
         display: -ms-flexbox;
         display: flex;
-        /* Webkit対応：flex-directionの完全対応 */
+        /* Webkit対応：flex_directionの完全対応 */
         -webkit-box-orient: horizontal;
         -webkit-box-direction: reverse;
         -webkit-flex-direction: row-reverse;
@@ -940,8 +933,6 @@ body::before {
         -moz-box-direction: reverse;
         -ms-flex-direction: row-reverse;
         flex-direction: row-reverse;
-        /* Webkit対応：gapプロパティのフォールバック */
-        gap: 8px;
         line-height: 0.9;
         /* Webkit対応：align-itemsの完全対応 */
         -webkit-box-align: start;
@@ -955,11 +946,9 @@ body::before {
         flex-wrap: nowrap;
     }
     
-    /* gapが効かない古いWebkit用のフォールバック */
-    @supports not (gap: 1rem) {
-        .t-top__visual-slogan__main__area > *:not(:last-child) {
-            margin-left: 8px;
-        }
+    /* iOS Safari対応：gapの代わりにmarginを使用（確実な間隔調整） */
+    .t-top__visual-slogan__main__area .t-top__visual-slogan__main__block:not(:last-child) {
+        margin-left: 8px;
     }
     
     .t-top__visual-slogan__main__block {
