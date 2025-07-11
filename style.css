@@ -884,39 +884,39 @@ body::before {
 /* 780px以下でテロップを縦読みに変更 */
 @media (max-width: 780px) {
     .t-top__visual-slogan {
-        top: 25px;
-        left: 35px;
+      top: 25px;
+      left: 35px;
     }
-
+  
+    /* テロップ全体：横並びにする */
     .t-top__visual-slogan__main {
-        display: flex;
-        flex-direction: row; /* 左→右に複数の縦列を並べる */
-        align-items: flex-start;
+      display: flex;
+      flex-direction: row-reverse; /* 縦書き順に右→左に並ぶ */
+      align-items: flex-start;
     }
-
+  
+    /* 各「列」エリア：縦書き */
     .t-top__visual-slogan__main__area {
-        display: block;
-        margin-right: 8px; /* gap代わり */
+      writing-mode: vertical-rl;
+      -webkit-writing-mode: vertical-rl;
+      -ms-writing-mode: tb-rl;
+      text-orientation: upright;
+      -webkit-text-orientation: upright;
+      font-size: 1.4rem;
+      line-height: 1.2;
+      margin-left: 8px; /* 各列の間隔 */
     }
-
+  
+    /* 各「文字」ブロック（1文字ずつ） */
     .t-top__visual-slogan__main__block {
-        display: block;
-        margin-bottom: 8px; /* 縦の間隔を空ける（テロップ間） */
+      margin-bottom: 8px; /* 縦方向の余白 */
     }
-
+  
     .t-top__visual-slogan__main__txt {
-        writing-mode: vertical-rl;
-        text-orientation: upright;
-        -webkit-writing-mode: vertical-rl;
-        -webkit-text-orientation: upright;
-        padding: 12px 6px;
-        font-size: 1.4rem;
-        line-height: 1.2;
-        max-height: 50vh;
-        overflow: hidden;
+      display: block;
+      padding: 6px;
     }
-}
-
+  }  
 
 /* 480px以下でもプログレスアニメーションを右下固定で表示 */
 @media (max-width: 480px) {
