@@ -887,88 +887,36 @@ body::before {
         top: 25px;
         left: 35px;
     }
-    
-    .t-top__visual-slogan__main {
-        /* Webkit対応：flexboxの完全対応 */
-        display: -webkit-box;
-        display: -webkit-flex;
-        display: -moz-box;
-        display: -ms-flexbox;
-        display: flex;
-        /* Webkit対応：flex-directionの完全対応 */
-        -webkit-box-orient: horizontal;
-        -webkit-box-direction: reverse;
-        -webkit-flex-direction: row-reverse;
-        -moz-box-orient: horizontal;
-        -moz-box-direction: reverse;
-        -ms-flex-direction: row-reverse;
-        flex-direction: row-reverse;
 
-        /* Webkit対応：align-itemsの完全対応 */
-        -webkit-box-align: start;
-        -webkit-align-items: flex-start;
-        -moz-box-align: start;
-        -ms-flex-align: start;
-        align-items: flex-start;
-    }
-    
-    /* iOS Safari対応：gapの代わりにmarginを使用（確実な間隔調整） */
-    .t-top__visual-slogan__main .t-top__visual-slogan__main__area:not(:last-child) {
-        margin-left: 8px;
-    }
-    
-    .t-top__visual-slogan__main__area {
-        font-size: 1.4rem;
-        /* Webkit対応：flexboxの完全対応 */
-        display: -webkit-box;
-        display: -webkit-flex;
-        display: -moz-box;
-        display: -ms-flexbox;
+    .t-top__visual-slogan__main {
         display: flex;
-        /* Webkit対応：flex_directionの完全対応 */
-        -webkit-box-orient: horizontal;
-        -webkit-box-direction: reverse;
-        -webkit-flex-direction: row-reverse;
-        -moz-box-orient: horizontal;
-        -moz-box-direction: reverse;
-        -ms-flex-direction: row-reverse;
-        flex-direction: row-reverse;
-        line-height: 0.9;
-        /* Webkit対応：align-itemsの完全対応 */
-        -webkit-box-align: start;
-        -webkit-align-items: flex-start;
-        -moz-box-align: start;
-        -ms-flex-align: start;
+        flex-direction: row; /* 左→右に複数の縦列を並べる */
         align-items: flex-start;
-        /* Webkit対応：flex-wrapの完全対応 */
-        -webkit-flex-wrap: nowrap;
-        -ms-flex-wrap: nowrap;
-        flex-wrap: nowrap;
     }
-    
-    /* iOS Safari対応：gapの代わりにmarginを使用（確実な間隔調整） */
-    .t-top__visual-slogan__main__area .t-top__visual-slogan__main__block:not(:last-child) {
-        margin-left: 8px;
-    }
-    
-    .t-top__visual-slogan__main__block {
-        margin-bottom: 0;
+
+    .t-top__visual-slogan__main__area {
         display: block;
+        margin-right: 8px; /* gap代わり */
     }
-    
+
+    .t-top__visual-slogan__main__block {
+        display: block;
+        margin-bottom: 8px; /* 縦の間隔を空ける（テロップ間） */
+    }
+
     .t-top__visual-slogan__main__txt {
-        /* iOS Safari対応：縦書きテキストの改善 */
-        -webkit-writing-mode: vertical-rl;
-        -ms-writing-mode: tb-rl;
         writing-mode: vertical-rl;
-        -webkit-text-orientation: upright;
         text-orientation: upright;
+        -webkit-writing-mode: vertical-rl;
+        -webkit-text-orientation: upright;
         padding: 12px 6px;
-        height: auto;
+        font-size: 1.4rem;
+        line-height: 1.2;
         max-height: 50vh;
         overflow: hidden;
     }
 }
+
 
 /* 480px以下でもプログレスアニメーションを右下固定で表示 */
 @media (max-width: 480px) {
