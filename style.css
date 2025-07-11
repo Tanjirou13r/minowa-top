@@ -39,9 +39,15 @@
 * {
     margin: 0;
     padding: 0;
+    /* Webkit対応：box-sizingの完全対応 */
+    -webkit-box-sizing: border-box;
+    -moz-box-sizing: border-box;
     box-sizing: border-box;
     /* iOS Safari対応：3Dアクセラレーションを有効化 */
     -webkit-transform: translateZ(0);
+    -moz-transform: translateZ(0);
+    -ms-transform: translateZ(0);
+    -o-transform: translateZ(0);
     transform: translateZ(0);
 }
 
@@ -56,6 +62,9 @@ body {
     overflow-scrolling: touch;
     /* iOS Safari対応：タッチ操作の改善 */
     touch-action: manipulation;
+    /* Webkit対応：アンチエイリアシング */
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
 }
 
 body::before {
@@ -69,6 +78,9 @@ body::before {
     z-index: 0;
     /* iOS Safari対応：3Dアクセラレーションを有効化 */
     -webkit-transform: translateZ(0);
+    -moz-transform: translateZ(0);
+    -ms-transform: translateZ(0);
+    -o-transform: translateZ(0);
     transform: translateZ(0);
 }
 
@@ -83,9 +95,15 @@ body::before {
     /* iOS Safari対応：backdrop-filterのフォールバック */
     -webkit-backdrop-filter: blur(10px);
     backdrop-filter: blur(10px);
+    /* Webkit対応：box-shadowの完全対応 */
+    -webkit-box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+    -moz-box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
     box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
     /* iOS Safari対応：3Dアクセラレーションを有効化 */
     -webkit-transform: translateZ(0);
+    -moz-transform: translateZ(0);
+    -ms-transform: translateZ(0);
+    -o-transform: translateZ(0);
     transform: translateZ(0);
 }
 
@@ -107,8 +125,23 @@ body::before {
 }
 
 .l-header__main {
+    /* Webkit対応：flexboxの完全対応 */
+    display: -webkit-box;
+    display: -webkit-flex;
+    display: -moz-box;
+    display: -ms-flexbox;
     display: flex;
+    /* Webkit対応：align-itemsの完全対応 */
+    -webkit-box-align: center;
+    -webkit-align-items: center;
+    -moz-box-align: center;
+    -ms-flex-align: center;
     align-items: center;
+    /* Webkit対応：justify-contentの完全対応 */
+    -webkit-box-pack: justify;
+    -webkit-justify-content: space-between;
+    -moz-box-pack: justify;
+    -ms-flex-pack: justify;
     justify-content: space-between;
     width: 100%;
     height: 100%;
@@ -126,6 +159,8 @@ body::before {
     /* iOS Safari対応：画像の読み込み改善 */
     -webkit-touch-callout: none;
     -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
     user-select: none;
 }
 
@@ -134,15 +169,33 @@ body::before {
 }
 
 .l-menu__list {
+    /* Webkit対応：flexboxの完全対応 */
+    display: -webkit-box;
+    display: -webkit-flex;
+    display: -moz-box;
+    display: -ms-flexbox;
     display: flex;
     list-style: none;
+    /* Webkit対応：gapプロパティのフォールバック */
     gap: 2rem;
+}
+
+/* gapが効かない古いWebkit用のフォールバック */
+@supports not (gap: 1rem) {
+    .l-menu__list li:not(:last-child) {
+        margin-right: 2rem;
+    }
 }
 
 .l-menu__list a {
     color: #333;
     text-decoration: none;
     font-weight: 500;
+    /* Webkit対応：transitionの完全対応 */
+    -webkit-transition: color 0.3s ease;
+    -moz-transition: color 0.3s ease;
+    -ms-transition: color 0.3s ease;
+    -o-transition: color 0.3s ease;
     transition: color 0.3s ease;
     /* iOS Safari対応：タップハイライトを無効化 */
     -webkit-tap-highlight-color: transparent;
@@ -168,14 +221,23 @@ body::before {
 /* ファーストビューセクション */
 .l-title {
     position: relative;
+    /* Webkit対応：calc()の完全対応 */
+    height: -webkit-calc(100vh - 140px);
+    height: -moz-calc(100vh - 140px);
     height: calc(100vh - 140px);
     overflow: hidden;
+    /* Webkit対応：border-radiusの完全対応 */
+    -webkit-border-radius: 20px;
+    -moz-border-radius: 20px;
     border-radius: 20px;
     margin: 0 auto;
     max-width: 1400px;
     background-color: #000;
     /* iOS Safari対応：3Dアクセラレーションを有効化 */
     -webkit-transform: translateZ(0);
+    -moz-transform: translateZ(0);
+    -ms-transform: translateZ(0);
+    -o-transform: translateZ(0);
     transform: translateZ(0);
 }
 
@@ -242,10 +304,16 @@ body::before {
     opacity: 0;
     /* iOS Safari対応：アニメーションの改善 */
     -webkit-transition: opacity 1s ease-in-out;
+    -moz-transition: opacity 1s ease-in-out;
+    -ms-transition: opacity 1s ease-in-out;
+    -o-transition: opacity 1s ease-in-out;
     transition: opacity 1s ease-in-out;
     z-index: 1;
     /* iOS Safari対応：3Dアクセラレーションを有効化 */
     -webkit-transform: translateZ(0);
+    -moz-transform: translateZ(0);
+    -ms-transform: translateZ(0);
+    -o-transform: translateZ(0);
     transform: translateZ(0);
 }
 
@@ -259,6 +327,9 @@ body::before {
     height: 100%;
     position: relative;
     overflow: hidden;
+    /* Webkit対応：border-radiusの完全対応 */
+    -webkit-border-radius: 20px;
+    -moz-border-radius: 20px;
     border-radius: 20px;
 }
 
@@ -266,18 +337,33 @@ body::before {
     width: 100%;
     height: 100%;
     /* iOS Safari対応：object-fitのフォールバック */
+    -webkit-object-fit: cover;
+    -moz-object-fit: cover;
+    -ms-object-fit: cover;
     -o-object-fit: cover;
     object-fit: cover;
+    /* Webkit対応：object-positionの完全対応 */
+    -webkit-object-position: center;
+    -moz-object-position: center;
+    -ms-object-position: center;
     -o-object-position: center;
     object-position: center;
+    /* Webkit対応：border-radiusの完全対応 */
+    -webkit-border-radius: 20px;
+    -moz-border-radius: 20px;
     border-radius: 20px;
     /* iOS Safari対応：画像の読み込み改善 */
     -webkit-touch-callout: none;
     -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
     user-select: none;
 }
 
 .js-carousel__obj.bottom-position {
+    -webkit-object-position: bottom;
+    -moz-object-position: bottom;
+    -ms-object-position: bottom;
     -o-object-position: bottom;
     object-position: bottom;
 }
@@ -290,6 +376,8 @@ body::before {
         background-repeat: no-repeat;
         height: 100%;
         width: 100%;
+        /* 画像を非表示にしてbackground-imageで表示 */
+        opacity: 0;
     }
     
     .js-carousel__obj.bottom-position {
@@ -334,7 +422,13 @@ body::before {
     display: inline-block;
     background-color: rgba(255, 255, 255, 0.95);
     padding: 10px 20px;
+    /* Webkit対応：border-radiusの完全対応 */
+    -webkit-border-radius: 8px;
+    -moz-border-radius: 8px;
     border-radius: 8px;
+    /* Webkit対応：box-shadowの完全対応 */
+    -webkit-box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+    -moz-box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
     box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
     /* iOS Safari対応：backdrop-filterのフォールバック */
     -webkit-backdrop-filter: blur(10px);
@@ -357,43 +451,73 @@ body::before {
     opacity: 0;
     /* iOS Safari対応：アニメーションの改善 */
     -webkit-animation: fadeInUp 0.8s ease forwards;
+    -moz-animation: fadeInUp 0.8s ease forwards;
+    -ms-animation: fadeInUp 0.8s ease forwards;
+    -o-animation: fadeInUp 0.8s ease forwards;
     animation: fadeInUp 0.8s ease forwards;
 }
 
 .u-effect__cell:nth-child(1) { 
     -webkit-animation-delay: 0.1s;
+    -moz-animation-delay: 0.1s;
+    -ms-animation-delay: 0.1s;
+    -o-animation-delay: 0.1s;
     animation-delay: 0.1s; 
 }
 .u-effect__cell:nth-child(2) { 
     -webkit-animation-delay: 0.2s;
+    -moz-animation-delay: 0.2s;
+    -ms-animation-delay: 0.2s;
+    -o-animation-delay: 0.2s;
     animation-delay: 0.2s; 
 }
 .u-effect__cell:nth-child(3) { 
     -webkit-animation-delay: 0.3s;
+    -moz-animation-delay: 0.3s;
+    -ms-animation-delay: 0.3s;
+    -o-animation-delay: 0.3s;
     animation-delay: 0.3s; 
 }
 .u-effect__cell:nth-child(4) { 
     -webkit-animation-delay: 0.4s;
+    -moz-animation-delay: 0.4s;
+    -ms-animation-delay: 0.4s;
+    -o-animation-delay: 0.4s;
     animation-delay: 0.4s; 
 }
 .u-effect__cell:nth-child(5) { 
     -webkit-animation-delay: 0.5s;
+    -moz-animation-delay: 0.5s;
+    -ms-animation-delay: 0.5s;
+    -o-animation-delay: 0.5s;
     animation-delay: 0.5s; 
 }
 .u-effect__cell:nth-child(6) { 
     -webkit-animation-delay: 0.6s;
+    -moz-animation-delay: 0.6s;
+    -ms-animation-delay: 0.6s;
+    -o-animation-delay: 0.6s;
     animation-delay: 0.6s; 
 }
 .u-effect__cell:nth-child(7) { 
     -webkit-animation-delay: 0.7s;
+    -moz-animation-delay: 0.7s;
+    -ms-animation-delay: 0.7s;
+    -o-animation-delay: 0.7s;
     animation-delay: 0.7s; 
 }
 .u-effect__cell:nth-child(8) { 
     -webkit-animation-delay: 0.8s;
+    -moz-animation-delay: 0.8s;
+    -ms-animation-delay: 0.8s;
+    -o-animation-delay: 0.8s;
     animation-delay: 0.8s; 
 }
 .u-effect__cell:nth-child(9) { 
     -webkit-animation-delay: 0.9s;
+    -moz-animation-delay: 0.9s;
+    -ms-animation-delay: 0.9s;
+    -o-animation-delay: 0.9s;
     animation-delay: 0.9s; 
 }
 
@@ -411,15 +535,60 @@ body::before {
     }
 }
 
+@-moz-keyframes fadeInUp {
+    from {
+        opacity: 0;
+        -moz-transform: translateY(20px);
+        transform: translateY(20px);
+    }
+    to {
+        opacity: 1;
+        -moz-transform: translateY(0);
+        transform: translateY(0);
+    }
+}
+
+@-ms-keyframes fadeInUp {
+    from {
+        opacity: 0;
+        -ms-transform: translateY(20px);
+        transform: translateY(20px);
+    }
+    to {
+        opacity: 1;
+        -ms-transform: translateY(0);
+        transform: translateY(0);
+    }
+}
+
+@-o-keyframes fadeInUp {
+    from {
+        opacity: 0;
+        -o-transform: translateY(20px);
+        transform: translateY(20px);
+    }
+    to {
+        opacity: 1;
+        -o-transform: translateY(0);
+        transform: translateY(0);
+    }
+}
+
 @keyframes fadeInUp {
     from {
         opacity: 0;
         -webkit-transform: translateY(20px);
+        -moz-transform: translateY(20px);
+        -ms-transform: translateY(20px);
+        -o-transform: translateY(20px);
         transform: translateY(20px);
     }
     to {
         opacity: 1;
         -webkit-transform: translateY(0);
+        -moz-transform: translateY(0);
+        -ms-transform: translateY(0);
+        -o-transform: translateY(0);
         transform: translateY(0);
     }
 }
@@ -431,6 +600,9 @@ body::before {
     z-index: 1000;
     /* iOS Safari対応：3Dアクセラレーションを有効化 */
     -webkit-transform: translateZ(0);
+    -moz-transform: translateZ(0);
+    -ms-transform: translateZ(0);
+    -o-transform: translateZ(0);
     transform: translateZ(0);
 }
 
@@ -462,6 +634,9 @@ body::before {
     margin: 0 auto;
     /* iOS Safari対応：アニメーションの改善 */
     -webkit-animation: scroll-bounce 2s infinite;
+    -moz-animation: scroll-bounce 2s infinite;
+    -ms-animation: scroll-bounce 2s infinite;
+    -o-animation: scroll-bounce 2s infinite;
     animation: scroll-bounce 2s infinite;
 }
 
@@ -481,17 +656,71 @@ body::before {
     }
 }
 
+@-moz-keyframes scroll-bounce {
+    0%, 20%, 50%, 80%, 100% {
+        -moz-transform: translateY(0);
+        transform: translateY(0);
+    }
+    40% {
+        -moz-transform: translateY(-10px);
+        transform: translateY(-10px);
+    }
+    60% {
+        -moz-transform: translateY(-5px);
+        transform: translateY(-5px);
+    }
+}
+
+@-ms-keyframes scroll-bounce {
+    0%, 20%, 50%, 80%, 100% {
+        -ms-transform: translateY(0);
+        transform: translateY(0);
+    }
+    40% {
+        -ms-transform: translateY(-10px);
+        transform: translateY(-10px);
+    }
+    60% {
+        -ms-transform: translateY(-5px);
+        transform: translateY(-5px);
+    }
+}
+
+@-o-keyframes scroll-bounce {
+    0%, 20%, 50%, 80%, 100% {
+        -o-transform: translateY(0);
+        transform: translateY(0);
+    }
+    40% {
+        -o-transform: translateY(-10px);
+        transform: translateY(-10px);
+    }
+    60% {
+        -o-transform: translateY(-5px);
+        transform: translateY(-5px);
+    }
+}
+
 @keyframes scroll-bounce {
     0%, 20%, 50%, 80%, 100% {
         -webkit-transform: translateY(0);
+        -moz-transform: translateY(0);
+        -ms-transform: translateY(0);
+        -o-transform: translateY(0);
         transform: translateY(0);
     }
     40% {
         -webkit-transform: translateY(-10px);
+        -moz-transform: translateY(-10px);
+        -ms-transform: translateY(-10px);
+        -o-transform: translateY(-10px);
         transform: translateY(-10px);
     }
     60% {
         -webkit-transform: translateY(-5px);
+        -moz-transform: translateY(-5px);
+        -ms-transform: translateY(-5px);
+        -o-transform: translateY(-5px);
         transform: translateY(-5px);
     }
 }
@@ -507,6 +736,9 @@ body::before {
 .t-top__visual-indicator__circle {
     /* iOS Safari対応：transform改善 */
     -webkit-transform: rotate(-90deg);
+    -moz-transform: rotate(-90deg);
+    -ms-transform: rotate(-90deg);
+    -o-transform: rotate(-90deg);
     transform: rotate(-90deg);
 }
 
@@ -525,6 +757,9 @@ body::before {
     stroke-dashoffset: 220;
     /* iOS Safari対応：transition改善 */
     -webkit-transition: stroke-dashoffset 0.3s ease;
+    -moz-transition: stroke-dashoffset 0.3s ease;
+    -ms-transition: stroke-dashoffset 0.3s ease;
+    -o-transition: stroke-dashoffset 0.3s ease;
     transition: stroke-dashoffset 0.3s ease;
 }
 
@@ -534,6 +769,9 @@ body::before {
     left: 50%;
     /* iOS Safari対応：transform改善 */
     -webkit-transform: translate(-50%, -50%);
+    -moz-transform: translate(-50%, -50%);
+    -ms-transform: translate(-50%, -50%);
+    -o-transform: translate(-50%, -50%);
     transform: translate(-50%, -50%);
     color: #fff;
     font-size: 1.2rem;
@@ -569,6 +807,9 @@ body::before {
         margin: 5px 0;
         /* iOS Safari対応：transition改善 */
         -webkit-transition: 0.3s;
+        -moz-transition: 0.3s;
+        -ms-transition: 0.3s;
+        -o-transition: 0.3s;
         transition: 0.3s;
     }
     
@@ -582,6 +823,9 @@ body::before {
         margin: 5px 0;
         /* iOS Safari対応：transition改善 */
         -webkit-transition: 0.3s;
+        -moz-transition: 0.3s;
+        -ms-transition: 0.3s;
+        -o-transition: 0.3s;
         transition: 0.3s;
     }
     
@@ -590,12 +834,21 @@ body::before {
     }
     
     .l-title {
+        /* Webkit対応：border-radiusの完全対応 */
+        -webkit-border-radius: 15px;
+        -moz-border-radius: 15px;
         border-radius: 15px;
+        /* Webkit対応：calc()の完全対応 */
+        height: -webkit-calc(100vh - 120px);
+        height: -moz-calc(100vh - 120px);
         height: calc(100vh - 120px);
     }
     
     .js-carousel__frame,
     .js-carousel__obj {
+        /* Webkit対応：border-radiusの完全対応 */
+        -webkit-border-radius: 15px;
+        -moz-border-radius: 15px;
         border-radius: 15px;
     }
     
@@ -640,20 +893,73 @@ body::before {
     }
     
     .t-top__visual-slogan__main {
+        /* Webkit対応：flexboxの完全対応 */
+        display: -webkit-box;
+        display: -webkit-flex;
+        display: -moz-box;
+        display: -ms-flexbox;
         display: flex;
+        /* Webkit対応：flex-directionの完全対応 */
+        -webkit-box-orient: horizontal;
+        -webkit-box-direction: reverse;
+        -webkit-flex-direction: row-reverse;
+        -moz-box-orient: horizontal;
+        -moz-box-direction: reverse;
+        -ms-flex-direction: row-reverse;
         flex-direction: row-reverse;
+        /* Webkit対応：gapプロパティのフォールバック */
         gap: 8px;
+        /* Webkit対応：align-itemsの完全対応 */
+        -webkit-box-align: start;
+        -webkit-align-items: flex-start;
+        -moz-box-align: start;
+        -ms-flex-align: start;
         align-items: flex-start;
+    }
+    
+    /* gapが効かない古いWebkit用のフォールバック */
+    @supports not (gap: 1rem) {
+        .t-top__visual-slogan__main > *:not(:last-child) {
+            margin-left: 8px;
+        }
     }
     
     .t-top__visual-slogan__main__area {
         font-size: 1.4rem;
+        /* Webkit対応：flexboxの完全対応 */
+        display: -webkit-box;
+        display: -webkit-flex;
+        display: -moz-box;
+        display: -ms-flexbox;
         display: flex;
+        /* Webkit対応：flex-directionの完全対応 */
+        -webkit-box-orient: horizontal;
+        -webkit-box-direction: reverse;
+        -webkit-flex-direction: row-reverse;
+        -moz-box-orient: horizontal;
+        -moz-box-direction: reverse;
+        -ms-flex-direction: row-reverse;
         flex-direction: row-reverse;
+        /* Webkit対応：gapプロパティのフォールバック */
         gap: 8px;
         line-height: 0.9;
+        /* Webkit対応：align-itemsの完全対応 */
+        -webkit-box-align: start;
+        -webkit-align-items: flex-start;
+        -moz-box-align: start;
+        -ms-flex-align: start;
         align-items: flex-start;
+        /* Webkit対応：flex-wrapの完全対応 */
+        -webkit-flex-wrap: nowrap;
+        -ms-flex-wrap: nowrap;
         flex-wrap: nowrap;
+    }
+    
+    /* gapが効かない古いWebkit用のフォールバック */
+    @supports not (gap: 1rem) {
+        .t-top__visual-slogan__main__area > *:not(:last-child) {
+            margin-left: 8px;
+        }
     }
     
     .t-top__visual-slogan__main__block {
@@ -702,5 +1008,51 @@ body::before {
     
     .t-top__visual-indicator__text {
         font-size: 0.9rem;
+    }
+}
+
+/* 古いWebkitブラウザ用の追加フォールバック */
+@-webkit-keyframes fallback-fadeIn {
+    from { opacity: 0; }
+    to { opacity: 1; }
+}
+
+/* 古いWebkitでflexboxが効かない場合のフォールバック */
+@media screen and (-webkit-min-device-pixel-ratio: 0) {
+    .l-header__main {
+        -webkit-display: -webkit-box;
+    }
+    
+    .l-menu__list {
+        -webkit-display: -webkit-box;
+    }
+    
+    .t-top__visual-slogan__main {
+        -webkit-display: -webkit-box;
+        -webkit-box-orient: horizontal;
+        -webkit-box-direction: reverse;
+    }
+    
+    .t-top__visual-slogan__main__area {
+        -webkit-display: -webkit-box;
+        -webkit-box-orient: horizontal;
+        -webkit-box-direction: reverse;
+    }
+}
+
+/* iOS Safari特有の修正 */
+@supports (-webkit-appearance: none) {
+    body {
+        /* スクロール時のバウンス効果を無効化 */
+        -webkit-overflow-scrolling: touch;
+        overflow-scrolling: touch;
+    }
+    
+    /* テキストの選択を完全に無効化 */
+    .js-carousel__obj,
+    .l-header__logo img {
+        -webkit-user-select: none;
+        -webkit-touch-callout: none;
+        -webkit-tap-highlight-color: transparent;
     }
 } 

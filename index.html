@@ -184,7 +184,7 @@
                     html += '<span class="u-effect-type1">';
                     
                     for (let char of line) {
-                        html += `<span class="u-effect__cell" style="animation-delay: ${charIndex * 0.1}s;">${char}</span>`;
+                        html += `<span class="u-effect__cell" style="-webkit-animation-delay: ${charIndex * 0.1}s; -moz-animation-delay: ${charIndex * 0.1}s; -ms-animation-delay: ${charIndex * 0.1}s; -o-animation-delay: ${charIndex * 0.1}s; animation-delay: ${charIndex * 0.1}s;">${char}</span>`;
                         charIndex++;
                     }
                     
@@ -210,9 +210,19 @@
 
             // 円形プログレスをリセットする関数
             function resetProgress() {
+                // Webkit対応：transitionのプレフィックス追加
+                progressCircle.style.WebkitTransition = 'none';
+                progressCircle.style.MozTransition = 'none';
+                progressCircle.style.msTransition = 'none';
+                progressCircle.style.OTransition = 'none';
                 progressCircle.style.transition = 'none';
                 progressCircle.style.strokeDashoffset = circumference;
                 setTimeout(() => {
+                    // Webkit対応：transitionのプレフィックス追加
+                    progressCircle.style.WebkitTransition = `stroke-dashoffset ${slideInterval}ms linear`;
+                    progressCircle.style.MozTransition = `stroke-dashoffset ${slideInterval}ms linear`;
+                    progressCircle.style.msTransition = `stroke-dashoffset ${slideInterval}ms linear`;
+                    progressCircle.style.OTransition = `stroke-dashoffset ${slideInterval}ms linear`;
                     progressCircle.style.transition = `stroke-dashoffset ${slideInterval}ms linear`;
                     progressCircle.style.strokeDashoffset = '0';
                 }, 50);
