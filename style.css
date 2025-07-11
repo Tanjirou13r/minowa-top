@@ -40,6 +40,9 @@
     margin: 0;
     padding: 0;
     box-sizing: border-box;
+    /* iOS Safari対応：3Dアクセラレーションを有効化 */
+    -webkit-transform: translateZ(0);
+    transform: translateZ(0);
 }
 
 body {
@@ -48,6 +51,11 @@ body {
     color: #333;
     background-color: #fff;
     position: relative;
+    /* iOS Safari対応：スクロール挙動を改善 */
+    -webkit-overflow-scrolling: touch;
+    overflow-scrolling: touch;
+    /* iOS Safari対応：タッチ操作の改善 */
+    touch-action: manipulation;
 }
 
 body::before {
@@ -59,6 +67,9 @@ body::before {
     height: 75vh;
     background-color: #e2f4c1;
     z-index: 0;
+    /* iOS Safari対応：3Dアクセラレーションを有効化 */
+    -webkit-transform: translateZ(0);
+    transform: translateZ(0);
 }
 
 /* ヘッダーのスタイル */
@@ -69,8 +80,20 @@ body::before {
     right: 0;
     z-index: 1000;
     background-color: rgba(255, 255, 255, 0.95);
+    /* iOS Safari対応：backdrop-filterのフォールバック */
+    -webkit-backdrop-filter: blur(10px);
     backdrop-filter: blur(10px);
     box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+    /* iOS Safari対応：3Dアクセラレーションを有効化 */
+    -webkit-transform: translateZ(0);
+    transform: translateZ(0);
+}
+
+/* iOS Safariでbackdrop-filterが効かない場合のフォールバック */
+@supports not (backdrop-filter: blur(10px)) {
+    .l-header {
+        background-color: rgba(255, 255, 255, 0.98);
+    }
 }
 
 .l-header__body {
@@ -100,6 +123,10 @@ body::before {
     height: 50px;
     width: auto;
     display: block;
+    /* iOS Safari対応：画像の読み込み改善 */
+    -webkit-touch-callout: none;
+    -webkit-user-select: none;
+    user-select: none;
 }
 
 .l-menu {
@@ -117,6 +144,8 @@ body::before {
     text-decoration: none;
     font-weight: 500;
     transition: color 0.3s ease;
+    /* iOS Safari対応：タップハイライトを無効化 */
+    -webkit-tap-highlight-color: transparent;
 }
 
 .l-menu__list a:hover {
@@ -125,6 +154,8 @@ body::before {
 
 .l-header__switch {
     display: none;
+    /* iOS Safari対応：タップハイライトを無効化 */
+    -webkit-tap-highlight-color: transparent;
 }
 
 /* メイン部分（ヘッダー分の余白） */
@@ -143,8 +174,10 @@ body::before {
     margin: 0 auto;
     max-width: 1400px;
     background-color: #000;
+    /* iOS Safari対応：3Dアクセラレーションを有効化 */
+    -webkit-transform: translateZ(0);
+    transform: translateZ(0);
 }
-
 
 .l-title__visual {
     position: relative;
@@ -207,8 +240,13 @@ body::before {
     width: 100%;
     height: 100%;
     opacity: 0;
+    /* iOS Safari対応：アニメーションの改善 */
+    -webkit-transition: opacity 1s ease-in-out;
     transition: opacity 1s ease-in-out;
     z-index: 1;
+    /* iOS Safari対応：3Dアクセラレーションを有効化 */
+    -webkit-transform: translateZ(0);
+    transform: translateZ(0);
 }
 
 .js-carousel__cell.is-current {
@@ -227,13 +265,36 @@ body::before {
 .js-carousel__obj {
     width: 100%;
     height: 100%;
+    /* iOS Safari対応：object-fitのフォールバック */
+    -o-object-fit: cover;
     object-fit: cover;
+    -o-object-position: center;
     object-position: center;
     border-radius: 20px;
+    /* iOS Safari対応：画像の読み込み改善 */
+    -webkit-touch-callout: none;
+    -webkit-user-select: none;
+    user-select: none;
 }
 
 .js-carousel__obj.bottom-position {
+    -o-object-position: bottom;
     object-position: bottom;
+}
+
+/* iOS Safari対応：object-fitが効かない場合のフォールバック */
+@supports not (object-fit: cover) {
+    .js-carousel__obj {
+        background-size: cover;
+        background-position: center;
+        background-repeat: no-repeat;
+        height: 100%;
+        width: 100%;
+    }
+    
+    .js-carousel__obj.bottom-position {
+        background-position: center bottom;
+    }
 }
 
 .t-top__visual-slogan {
@@ -275,7 +336,16 @@ body::before {
     padding: 10px 20px;
     border-radius: 8px;
     box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+    /* iOS Safari対応：backdrop-filterのフォールバック */
+    -webkit-backdrop-filter: blur(10px);
     backdrop-filter: blur(10px);
+}
+
+/* iOS Safariでbackdrop-filterが効かない場合のフォールバック */
+@supports not (backdrop-filter: blur(10px)) {
+    .t-top__visual-slogan__main__txt {
+        background-color: rgba(255, 255, 255, 0.98);
+    }
 }
 
 .u-effect-type1 {
@@ -285,26 +355,71 @@ body::before {
 .u-effect__cell {
     display: inline-block;
     opacity: 0;
+    /* iOS Safari対応：アニメーションの改善 */
+    -webkit-animation: fadeInUp 0.8s ease forwards;
     animation: fadeInUp 0.8s ease forwards;
 }
 
-.u-effect__cell:nth-child(1) { animation-delay: 0.1s; }
-.u-effect__cell:nth-child(2) { animation-delay: 0.2s; }
-.u-effect__cell:nth-child(3) { animation-delay: 0.3s; }
-.u-effect__cell:nth-child(4) { animation-delay: 0.4s; }
-.u-effect__cell:nth-child(5) { animation-delay: 0.5s; }
-.u-effect__cell:nth-child(6) { animation-delay: 0.6s; }
-.u-effect__cell:nth-child(7) { animation-delay: 0.7s; }
-.u-effect__cell:nth-child(8) { animation-delay: 0.8s; }
-.u-effect__cell:nth-child(9) { animation-delay: 0.9s; }
+.u-effect__cell:nth-child(1) { 
+    -webkit-animation-delay: 0.1s;
+    animation-delay: 0.1s; 
+}
+.u-effect__cell:nth-child(2) { 
+    -webkit-animation-delay: 0.2s;
+    animation-delay: 0.2s; 
+}
+.u-effect__cell:nth-child(3) { 
+    -webkit-animation-delay: 0.3s;
+    animation-delay: 0.3s; 
+}
+.u-effect__cell:nth-child(4) { 
+    -webkit-animation-delay: 0.4s;
+    animation-delay: 0.4s; 
+}
+.u-effect__cell:nth-child(5) { 
+    -webkit-animation-delay: 0.5s;
+    animation-delay: 0.5s; 
+}
+.u-effect__cell:nth-child(6) { 
+    -webkit-animation-delay: 0.6s;
+    animation-delay: 0.6s; 
+}
+.u-effect__cell:nth-child(7) { 
+    -webkit-animation-delay: 0.7s;
+    animation-delay: 0.7s; 
+}
+.u-effect__cell:nth-child(8) { 
+    -webkit-animation-delay: 0.8s;
+    animation-delay: 0.8s; 
+}
+.u-effect__cell:nth-child(9) { 
+    -webkit-animation-delay: 0.9s;
+    animation-delay: 0.9s; 
+}
 
-@keyframes fadeInUp {
+/* iOS Safari対応：Webkitプレフィックス付きキーフレーム */
+@-webkit-keyframes fadeInUp {
     from {
         opacity: 0;
+        -webkit-transform: translateY(20px);
         transform: translateY(20px);
     }
     to {
         opacity: 1;
+        -webkit-transform: translateY(0);
+        transform: translateY(0);
+    }
+}
+
+@keyframes fadeInUp {
+    from {
+        opacity: 0;
+        -webkit-transform: translateY(20px);
+        transform: translateY(20px);
+    }
+    to {
+        opacity: 1;
+        -webkit-transform: translateY(0);
         transform: translateY(0);
     }
 }
@@ -314,6 +429,9 @@ body::before {
     right: 40px;
     bottom: 40px;
     z-index: 1000;
+    /* iOS Safari対応：3Dアクセラレーションを有効化 */
+    -webkit-transform: translateZ(0);
+    transform: translateZ(0);
 }
 
 .t-top__visual-scroll__main {
@@ -325,6 +443,8 @@ body::before {
     text-decoration: none;
     display: inline-block;
     text-align: center;
+    /* iOS Safari対応：タップハイライトを無効化 */
+    -webkit-tap-highlight-color: transparent;
 }
 
 .t-top__visual-scroll__txt {
@@ -340,17 +460,38 @@ body::before {
     height: 30px;
     background-color: #333;
     margin: 0 auto;
+    /* iOS Safari対応：アニメーションの改善 */
+    -webkit-animation: scroll-bounce 2s infinite;
     animation: scroll-bounce 2s infinite;
+}
+
+/* iOS Safari対応：Webkitプレフィックス付きキーフレーム */
+@-webkit-keyframes scroll-bounce {
+    0%, 20%, 50%, 80%, 100% {
+        -webkit-transform: translateY(0);
+        transform: translateY(0);
+    }
+    40% {
+        -webkit-transform: translateY(-10px);
+        transform: translateY(-10px);
+    }
+    60% {
+        -webkit-transform: translateY(-5px);
+        transform: translateY(-5px);
+    }
 }
 
 @keyframes scroll-bounce {
     0%, 20%, 50%, 80%, 100% {
+        -webkit-transform: translateY(0);
         transform: translateY(0);
     }
     40% {
+        -webkit-transform: translateY(-10px);
         transform: translateY(-10px);
     }
     60% {
+        -webkit-transform: translateY(-5px);
         transform: translateY(-5px);
     }
 }
@@ -364,6 +505,8 @@ body::before {
 }
 
 .t-top__visual-indicator__circle {
+    /* iOS Safari対応：transform改善 */
+    -webkit-transform: rotate(-90deg);
     transform: rotate(-90deg);
 }
 
@@ -380,6 +523,8 @@ body::before {
     stroke-linecap: round;
     stroke-dasharray: 220;
     stroke-dashoffset: 220;
+    /* iOS Safari対応：transition改善 */
+    -webkit-transition: stroke-dashoffset 0.3s ease;
     transition: stroke-dashoffset 0.3s ease;
 }
 
@@ -387,6 +532,8 @@ body::before {
     position: absolute;
     top: 50%;
     left: 50%;
+    /* iOS Safari対応：transform改善 */
+    -webkit-transform: translate(-50%, -50%);
     transform: translate(-50%, -50%);
     color: #fff;
     font-size: 1.2rem;
@@ -420,6 +567,8 @@ body::before {
         height: 3px;
         background-color: #333;
         margin: 5px 0;
+        /* iOS Safari対応：transition改善 */
+        -webkit-transition: 0.3s;
         transition: 0.3s;
     }
     
@@ -431,6 +580,8 @@ body::before {
         height: 3px;
         background-color: #333;
         margin: 5px 0;
+        /* iOS Safari対応：transition改善 */
+        -webkit-transition: 0.3s;
         transition: 0.3s;
     }
     
@@ -511,7 +662,11 @@ body::before {
     }
     
     .t-top__visual-slogan__main__txt {
+        /* iOS Safari対応：縦書きテキストの改善 */
+        -webkit-writing-mode: vertical-rl;
+        -ms-writing-mode: tb-rl;
         writing-mode: vertical-rl;
+        -webkit-text-orientation: upright;
         text-orientation: upright;
         padding: 12px 6px;
         height: auto;
