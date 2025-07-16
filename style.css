@@ -730,18 +730,35 @@ body::before {
 }
 
 .t-top__visual-indicator__circle {
+    /* iOS Safari対応：SVGの確実な表示 */
+    display: block;
+    width: 80px;
+    height: 80px;
     /* iOS Safari対応：transform改善 */
     -webkit-transform: rotate(-90deg);
     -moz-transform: rotate(-90deg);
     -ms-transform: rotate(-90deg);
     -o-transform: rotate(-90deg);
     transform: rotate(-90deg);
+    /* iOS Safari対応：3Dアクセラレーションを有効化 */
+    -webkit-transform: rotate(-90deg) translateZ(0);
+    transform: rotate(-90deg) translateZ(0);
+    /* iOS Safari対応：SVGの描画を強制 */
+    -webkit-backface-visibility: hidden;
+    backface-visibility: hidden;
+    /* iOS Safari対応：アンチエイリアシング */
+    shape-rendering: geometricPrecision;
 }
 
 .t-top__visual-indicator__bg {
     fill: none;
     stroke: rgba(255, 255, 255, 0.3);
     stroke-width: 4;
+    /* iOS Safari対応：SVGの描画品質改善 */
+    vector-effect: non-scaling-stroke;
+    shape-rendering: geometricPrecision;
+    /* iOS Safari対応：パスの確実な描画 */
+    stroke-miterlimit: 10;
 }
 
 .t-top__visual-indicator__progress {
@@ -757,6 +774,13 @@ body::before {
     -ms-transition: stroke-dashoffset 0.3s ease;
     -o-transition: stroke-dashoffset 0.3s ease;
     transition: stroke-dashoffset 0.3s ease;
+    /* iOS Safari対応：SVGの描画品質改善 */
+    vector-effect: non-scaling-stroke;
+    shape-rendering: geometricPrecision;
+    /* iOS Safari対応：パスの確実な描画 */
+    stroke-miterlimit: 10;
+    /* iOS Safari対応：ダッシュアレイの確実な表示 */
+    stroke-linejoin: round;
 }
 
 .t-top__visual-indicator__text {
@@ -999,6 +1023,15 @@ body::before {
     .t-top__visual-indicator__circle {
         width: 60px;
         height: 60px;
+        /* iOS Safari対応：小さいサイズでもSVGの確実な表示 */
+        display: block;
+        /* iOS Safari対応：3Dアクセラレーションを有効化 */
+        -webkit-transform: rotate(-90deg) translateZ(0);
+        transform: rotate(-90deg) translateZ(0);
+        /* iOS Safari対応：SVGの描画を強制 */
+        -webkit-backface-visibility: hidden;
+        backface-visibility: hidden;
+        shape-rendering: geometricPrecision;
     }
     
     .t-top__visual-indicator__bg,
@@ -1007,11 +1040,18 @@ body::before {
         cx: 30;
         cy: 30;
         stroke-width: 3;
+        /* iOS Safari対応：小さいサイズでのSVG描画品質改善 */
+        vector-effect: non-scaling-stroke;
+        shape-rendering: geometricPrecision;
+        stroke-miterlimit: 10;
     }
     
     .t-top__visual-indicator__progress {
         stroke-dasharray: 157;
         stroke-dashoffset: 157;
+        /* iOS Safari対応：ダッシュアレイの確実な表示 */
+        stroke-linejoin: round;
+        stroke-linecap: round;
     }
     
     .t-top__visual-indicator__text {
