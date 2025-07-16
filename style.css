@@ -919,13 +919,13 @@ body::before {
     
     .t-top__visual-slogan__main__area {
         font-size: 1.4rem;
-        /* Webkit対応：flexboxの完全対応 */
+        /* 縦書きテキストブロックを横に並べる */
         display: -webkit-box;
         display: -webkit-flex;
         display: -moz-box;
         display: -ms-flexbox;
         display: flex;
-        /* Webkit対応：flex_directionの完全対応 */
+        /* Webkit対応：flex_directionの完全対応（横方向） */
         -webkit-box-orient: horizontal;
         -webkit-box-direction: reverse;
         -webkit-flex-direction: row-reverse;
@@ -940,22 +940,29 @@ body::before {
         -moz-box-align: start;
         -ms-flex-align: start;
         align-items: flex-start;
+        /* 縦書きテキストの高さを確保 */
+        height: auto;
+        min-height: 200px;
         /* Webkit対応：flex-wrapの完全対応 */
         -webkit-flex-wrap: nowrap;
         -ms-flex-wrap: nowrap;
         flex-wrap: nowrap;
-
     }
     
-    /* iOS Safari対応：gapの代わりにmarginを使用（確実な間隔調整） */
+    /* iOS Safari対応：gapの代わりにmarginを使用（横方向の間隔調整） */
     .t-top__visual-slogan__main__area .t-top__visual-slogan__main__block:not(:last-child) {
         margin-left: 8px;
     }
     
     .t-top__visual-slogan__main__block {
-        margin-bottom: 0;
         display: block;
-
+        /* 縦書きテキストの自然な高さを確保 */
+        width: auto;
+        height: auto;
+        /* 縦書きテキストが隠れないように調整 */
+        -webkit-box-sizing: border-box;
+        -moz-box-sizing: border-box;
+        box-sizing: border-box;
     }
     
     .t-top__visual-slogan__main__txt {
@@ -967,9 +974,12 @@ body::before {
         text-orientation: upright;
         padding: 12px 6px;
         height: auto;
+        min-height: 120px;
         max-height: 50vh;
-        overflow: hidden;
-
+        overflow: visible;
+        /* 縦書きテキストの幅を確保 */
+        width: auto;
+        white-space: nowrap;
     }
 }
 
