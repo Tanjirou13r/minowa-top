@@ -810,7 +810,7 @@ body::before {
     }
 }
 
-@media (max-width: 768px) {
+@media (max-width: 900px) {
     .l-menu__list {
         display: none;
     }
@@ -1008,6 +1008,32 @@ body::before {
         /* 縦書きテキストの幅を確保 */
         width: auto;
         white-space: nowrap;
+    }
+}
+
+/* 640px以下でロゴサイズを自動調整 */
+@media (max-width: 640px) {
+    .l-header__logo img {
+        height: auto;
+        max-height: 40px;
+        width: auto;
+        max-width: 200px;
+        /* レスポンシブ対応でロゴが小さな画面に適応 */
+        object-fit: contain;
+        -webkit-object-fit: contain;
+        -moz-object-fit: contain;
+        -ms-object-fit: contain;
+        -o-object-fit: contain;
+    }
+    
+    /* ヘッダーの高さも少し調整 */
+    .l-header__frame {
+        height: 70px;
+    }
+    
+    /* ヘッダーボディのパディングも調整 */
+    .l-header__body {
+        padding: 0 20px;
     }
 }
 
