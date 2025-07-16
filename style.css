@@ -1004,8 +1004,6 @@ body::before {
         text-orientation: upright;
         padding: 12px 6px;
         height: auto;
-        min-height: 120px;
-        max-height: 50vh;
         overflow: visible;
         /* 縦書きテキストの幅を確保 */
         width: auto;
