@@ -874,10 +874,14 @@ body::before {
     
     .t-top__visual-slogan__main__txt {
         padding: 8px 15px;
+        /* iOS Safari対応：小画面での縦表示時の幅調整 */
+        min-width: 2em;
     }
     
     .t-top__visual-slogan__main__block {
         margin-bottom: 10px;
+        /* iOS Safari対応：小画面での縦表示時の幅調整 */
+        min-width: 2em;
     }
 }
 
@@ -944,6 +948,15 @@ body::before {
         -webkit-flex-wrap: nowrap;
         -ms-flex-wrap: nowrap;
         flex-wrap: nowrap;
+        /* iOS Safari対応：縦表示時のコンテナ幅制御 */
+        width: auto;
+        min-width: fit-content;
+        -webkit-min-width: -webkit-fit-content;
+        -moz-min-width: -moz-fit-content;
+        /* iOS Safari対応：flex-shrinkで縮小を防ぐ */
+        -webkit-flex-shrink: 0;
+        -ms-flex-shrink: 0;
+        flex-shrink: 0;
     }
     
     /* iOS Safari対応：gapの代わりにmarginを使用（確実な間隔調整） */
@@ -954,6 +967,13 @@ body::before {
     .t-top__visual-slogan__main__block {
         margin-bottom: 0;
         display: block;
+        /* iOS Safari対応：縦表示時のブロック幅を明示的に指定 */
+        width: auto;
+        min-width: 2.5em;
+        /* iOS Safari対応：flex-shrinkで縮小を防ぐ */
+        -webkit-flex-shrink: 0;
+        -ms-flex-shrink: 0;
+        flex-shrink: 0;
     }
     
     .t-top__visual-slogan__main__txt {
@@ -967,6 +987,17 @@ body::before {
         height: auto;
         max-height: 50vh;
         overflow: hidden;
+        /* iOS Safari対応：縦表示時のテロップ幅を明示的に指定 */
+        width: auto;
+        min-width: 2.5em;
+        /* iOS Safari対応：flex-shrinkで縮小を防ぐ */
+        -webkit-flex-shrink: 0;
+        -ms-flex-shrink: 0;
+        flex-shrink: 0;
+        /* iOS Safari対応：box-sizingを確実に適用 */
+        -webkit-box-sizing: content-box;
+        -moz-box-sizing: content-box;
+        box-sizing: content-box;
     }
 }
 
@@ -1043,5 +1074,28 @@ body::before {
         -webkit-user-select: none;
         -webkit-touch-callout: none;
         -webkit-tap-highlight-color: transparent;
+    }
+    
+    /* iOS Safari特有の縦書きテキスト幅問題の解決 */
+    @media (max-width: 780px) {
+        .t-top__visual-slogan__main__txt {
+            /* 縦書き時のテロップ幅を確実に確保 */
+            width: 3em !important;
+            min-width: 3em !important;
+            max-width: 3em !important;
+            /* iOS Safari特有の縮小問題を解決 */
+            -webkit-flex-basis: 3em;
+            flex-basis: 3em;
+        }
+        
+        .t-top__visual-slogan__main__block {
+            /* 縦書き時のブロック幅を確実に確保 */
+            width: 3em !important;
+            min-width: 3em !important;
+            max-width: 3em !important;
+            /* iOS Safari特有の縮小問題を解決 */
+            -webkit-flex-basis: 3em;
+            flex-basis: 3em;
+        }
     }
 } 
