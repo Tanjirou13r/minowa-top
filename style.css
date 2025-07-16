@@ -956,13 +956,19 @@ body::before {
     
     .t-top__visual-slogan__main__block {
         display: block;
-        /* 縦書きテキストの自然な高さを確保 */
-        width: auto;
+        /* iOS Safari対応：txtと同じ幅になるよう強制設定 */
+        width: 32px !important;
+        min-width: 32px !important;
+        max-width: 32px !important;
         height: auto;
         /* 縦書きテキストが隠れないように調整 */
         -webkit-box-sizing: border-box;
         -moz-box-sizing: border-box;
         box-sizing: border-box;
+        /* iOS Safari対応：flex設定で縮小を防ぐ */
+        -webkit-flex-shrink: 0;
+        -ms-flex-shrink: 0;
+        flex-shrink: 0;
     }
     
     .t-top__visual-slogan__main__txt {
@@ -1058,5 +1064,31 @@ body::before {
         -webkit-tap-highlight-color: transparent;
     }
     
-
+    /* iOS Safari特有の縦書きテキスト幅統一対応 */
+    @media (max-width: 780px) {
+        .t-top__visual-slogan__main__block {
+            /* blockの幅をtxtと完全に同一にする */
+            width: 32px !important;
+            min-width: 32px !important;
+            max-width: 32px !important;
+            /* iOS Safari特有の問題を解決 */
+            -webkit-flex-basis: 32px !important;
+            flex-basis: 32px !important;
+            -webkit-flex-grow: 0 !important;
+            flex-grow: 0 !important;
+            -webkit-flex-shrink: 0 !important;
+            flex-shrink: 0 !important;
+        }
+        
+        .t-top__visual-slogan__main__txt {
+            /* txtの幅を確実に32pxに統一 */
+            width: 32px !important;
+            min-width: 32px !important;
+            max-width: 32px !important;
+            /* iOS Safari対応：box-sizingを確実に適用 */
+            -webkit-box-sizing: border-box !important;
+            -moz-box-sizing: border-box !important;
+            box-sizing: border-box !important;
+        }
+    }
 } 
